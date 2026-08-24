@@ -1,4 +1,4 @@
-
+# encryption 
 def encrypt_file(shift1, shift2, input_path, output_path):
     encrypted_content = ""
     with open(input_path, "r") as file:
@@ -6,7 +6,7 @@ def encrypt_file(shift1, shift2, input_path, output_path):
     for char in content :
        if char.islower():
           if "a" <= char <= "n" :
-             encrypted_content += chr((((ord(char)-97) + shift1 * shift2 )% 26)+ 97) 
+             encrypted_content += chr((((ord(char)-97) + (shift1 * shift2) )% 26)+ 97) 
           else:
              encrypted_content += chr((((ord(char)-97) - (shift1 + shift2) )% 26)+ 97) 
 
@@ -20,7 +20,14 @@ def encrypt_file(shift1, shift2, input_path, output_path):
            encrypted_content += chr((((ord(char)-48) + (shift1 - shift2 ))% 10)+ 48) 
        else: 
           encrypted_content += char
-             
 
-               
-                                           
+    with open(output_path,"w") as file :
+          file.write(encrypted_content)
+                 
+# decryption
+
+def decrypt_file(shift1, shift2, input_path, output_path):
+    decrypted_content = ""
+    with open(input_path, "r") as file:
+      content = file.read()
+    
