@@ -51,4 +51,28 @@ def decrypt_file(shift1, shift2, input_path, output_path):
      file.write(decrypted_content)
 
 
+# verification
 
+def verify_files(original_path, decrypted_path):
+    with open(original_path, "r") as file:
+        original = file.read()
+
+    with open(decrypted_path, "r") as file:
+        decrypted = file.read()
+
+    if original == decrypted:
+        print("Decryption successful.")
+        return True
+    else:
+        print("Decryption failed.")
+        return False
+
+
+# main program
+
+shift1 = int(input("Enter shift1: "))
+shift2 = int(input("Enter shift2: "))
+
+encrypt_file(shift1, shift2, "raw_text.txt", "encrypted_text.txt")
+decrypt_file(shift1, shift2, "encrypted_text.txt", "decrypted_text.txt")
+verify_files("raw_text.txt", "decrypted_text.txt")
