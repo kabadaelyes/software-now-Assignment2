@@ -273,7 +273,7 @@ def evaluate_file(input_path: str) -> list[dict]:
 
 
 if __name__ == "__main__":
-    results = evaluate_file("sample_input.txt")
+    results = evaluate_file("input.txt")
     print(
         f"Successfully processed {len(results)} expressions. "
         "Check output.txt!"
